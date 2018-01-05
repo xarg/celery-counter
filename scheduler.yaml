@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: scheduler
+spec:
+  containers:
+  - name: scheduler
+    image: gcr.io/your-project/celery-counter
+    command: ["python", "scheduler.py"]
+  # Since a failed migration will most likely require a manual intervention we should never restart the Pod
+  restartPolicy: Never
